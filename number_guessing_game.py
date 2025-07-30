@@ -2,7 +2,7 @@ import random
 
 def welcome():
     print("🎯 Welcome to the Guessing Game!")
-    print("I'm thinking a number between 1 and 99")
+    print("I'm thinking of a number between 1 and 99")
     print("Can you guess that number?")
     print("Let's start!\n")
 
@@ -17,13 +17,18 @@ def check_guess(guess, number):
     else:
         return "correct"
 
-def get_guess():
+def play_game():
     number_to_guess = get_random_number()
     attempts = 0
+    guesses = []
 
     while 1: #or True instead of 1
         try:
+            if guesses:
+                print(f"Your previous guesses: {guesses}")
+
             guess = int(input("Enter your guess: "))
+            guesses.append(guess)
             attempts += 1
 
             result = check_guess(guess, number_to_guess)
@@ -33,11 +38,11 @@ def get_guess():
             elif result == "high":
                 print("Guess is high. Try again!")
             else:
-                print(f"🎉 Congratulations you guessed it in {attempts} attempts")
+                print(f"🎉 Congratulations you guessed it in {attempts} attempts!")
                 break
         except ValueError:
             print("Please enter a valid number")
 
 if __name__ == "__main__":
     welcome()
-    get_guess()
+    play_game()
