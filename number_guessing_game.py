@@ -43,6 +43,10 @@ def play_game():
         except ValueError:
             print("Please enter a valid number")
 
+            # can use match case also
+            # match result:
+            #       case "low":
+
 if __name__ == "__main__":
     welcome()
     play_game()
